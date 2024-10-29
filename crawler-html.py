@@ -61,7 +61,7 @@ except requests.exceptions.RequestException as e:
 
 
 # 使用 lxml 解析网页
-html = etree.HTML(response.content)
+html = etree.HTML(content)
 
 # 查找指定路径的所有 <li> 元素
 li_elements = html.xpath("/html/body/div[1]/div[3]/div[2]/div[2]/div/div/div[1]/div[4]/ul/li")
@@ -91,5 +91,7 @@ for li in li_elements:
     }
     words.append(row)
 data['words'] = words
+
+print("out_words_len", len(words))
 
 save_to_json(data)
